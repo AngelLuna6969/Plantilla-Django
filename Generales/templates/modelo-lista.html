@@ -1,0 +1,72 @@
+{%extends 'main.html'%}{%block title%}{{titulo|upper}}{%endblock title%}
+{%load static%}
+{%block scripts%}
+<!-- scripts jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<!-- scripts DataTable.js -->
+<script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.1/js/dataTables.bootstrap5.js"></script>
+<script src="{%static 'js/dataTable.js'%}"></script>
+{%endblock%}
+
+{%block styles%}
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
+<style>
+
+
+</style>
+{%endblock%}
+
+{%block content%}
+
+<main id="main-sistema">
+  <section id="sidebar-sistema">{%include 'sidebar.html'%}</section>
+  <section id="contenido-sistema">
+    <div class="container">
+      <br>
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h1 class="card-title text-center text-md-start">{{titulo}}</h1>
+          <a class="btn btn-sistema rounded-2 shadow-sm" href="{%url 'modelo-crear'%}">
+            <i class="bi bi-plus-square"></i>
+            <span class="mx-3">{{nombre_boton}}</span>
+          </a>
+          {% comment %} <a
+            class="text-end btn-sistema w-50 w-lg-25 boton d-flex align-self-end rounded-2 shadow-sm mx-1"
+            aria-current="page" href="{%url 'modelo-crear'%}"><span class="mx-3">{{nombre_boton}}</span></a> 
+            {% endcomment %}
+        </div>
+        <div class="card-body">
+          <!-- Tabla -->
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-xl-12">
+                <div class="table-responsive ">
+                  <table id="datatable-modelos" class="table tabled table-striped  table-hover">
+                    <thead>
+                      <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">NOMBRE</th>
+                        <th class="text-center">DESCRIPCION</th>
+                        <th class="text-center">FECHA</th>
+                        <th class="text-center">HORA</th>
+                        <th class="text-center">VER</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+</main>
+{%include 'footer.html'%}
+
+{%endblock content%}

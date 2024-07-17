@@ -1,0 +1,91 @@
+{%extends 'main.html'%}{%block title%}{{titulo|upper}}{%endblock title%}
+{%load static%}
+{% load crispy_forms_tags %}
+{%block scripts%}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script><link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+<script src="{%static 'js/form.js'%}"></script>
+
+{%endblock%}
+
+{%block styles%}
+<style>
+    .label-required {
+        color: red;
+    }
+
+</style>
+{%endblock%}
+
+{%block content%}
+<main id="main-sistema">
+    <section id="sidebar-sistema">
+        {%include 'sidebar.html'%}
+    </section>
+    <section id="contenido-sistema">
+        <div class="col-12 separador2"></div>
+        <!-- Container del titulo y boton -->
+        <br>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-between">
+                <div class="col-12">
+                    <h1 class="text-center">{{titulo}}</h1>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <!-- Información del modelo y sus derivados -->
+                <div class="col-12 col-lg-6">
+                    {%include 'modelo-complemento.html'%}
+
+                </div>
+                <!-- Formulario -->
+                <div class="col-12 col-lg-6">
+                    <form class="row" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ formset.management_form }}
+                        {{form.media}}
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card mt-2" style="background-color: var(--fondo-complementario);">
+                                        <div class="card-header aling-center"
+                                            style="background-color: var(--principal);">
+                                            <div class="text-center text">
+                                                Formulario
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            {% for field in form %}
+                                            {% if not field.is_hidden %}
+                                            <div class="main-field {%if field.field.required%}requerido{%endif%}">
+                                                {{ field|as_crispy_field }}
+                                            </div>
+                                            {%endif%}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container p-3">
+                            <div class="row">
+                                <div class="col-1 col-md-4"></div>
+                                <div class="col-10 col-md-4 d-flex align-items-center justify-content-around">
+                                    <input class="btn btn-sistema btn-lg" style="margin: 0;" type=button value="Atrás"
+                                        onClick="javascript:history.go(-1);">
+                                    <input class="btn btn-sistema btn-lg" type="submit" value="{{btn}}" name="guardar"
+                                        id="btn">
+                                </div>
+                                <div class="col-1 col-md-4"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{%include 'footer.html'%}
+{%endblock content%}

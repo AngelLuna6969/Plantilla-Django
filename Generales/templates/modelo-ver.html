@@ -1,0 +1,61 @@
+{%extends 'main.html'%}{%block title%}{{titulo|upper}}{%endblock title%}
+{%load static%}
+{%block scripts%}{%endblock%}
+
+{%block styles%}
+<style>
+    a {
+        word-wrap: break-word;
+    }
+</style>
+{%endblock%}
+
+{%block content%}
+<main id="main-sistema">
+    <section id="sidebar-sistema">
+        {%include 'sidebar.html'%}
+    </section>
+    <section id="contenido-sistema">
+        <div class="col-12 separador2"></div>
+        <!-- Container del titulo y boton -->
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h3 class="text-center text-md-start">Usuarios <span class="text-secondary">> {{dato}}</span></h3>
+                </div>
+                <div class="col-6">
+                    <h4 class="text-end">
+                        <i class="bi bi-house-fill"></i>Home <span class="text-secondary">/ Usuarios</span>
+                    </h4>
+                </div>
+            </div>
+            <br>
+            <div class="row d-flex align-items-center justify-content-between">
+                <div class="col-12">
+                    <div class="text-center">
+                        <div class="btn-group flex-wrap" role="group">
+                            <!-- Aquí van los botones -->
+                            <!-- Botón para crear el campo one to one one_modelo -->
+                            <a href="{%url 'one_modelo-crear' dato.id%}"
+                                class="btn btn-sistema btn-dark {%if dato.one_modelo%}disabled{%endif%}">One_modelo <i
+                                    class="bi bi-arrow-up-right-circle"></i></a>
+                            <!-- Botón para crear el campo one to one variante_modelo -->
+                            <a href="{%url 'variante_modelo-crear' dato.id%}"
+                                class="btn btn-sistema btn-dark {%if dato.variante_modelo%}disabled{%endif%}">Variante_modelo
+                                <i class="bi bi-arrow-up-right-circle"></i></a>
+                            <!-- Botón para crear el campo one to one many_modelo -->
+                            <a href="{%url 'many_modelo-crear' dato.id%}"
+                                class="btn btn-sistema btn-dark {%if dato.many_modelo%}disabled{%endif%}">Many_modelo <i
+                                    class="bi bi-arrow-up-right-circle"></i></a>
+                        </div>
+                    </div>
+                    <hr>
+                    {%include 'modelo-complemento.html'%}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{%include 'footer.html'%}
+{%endblock content%}
