@@ -1,0 +1,61 @@
+{%extends 'main.html'%}{%block title%}{{titulo|upper}}{%endblock title%}
+{%load static%}
+{%block scripts%}{%endblock%}
+
+{%block styles%}
+<style>
+
+
+</style>
+{%endblock%}
+
+{%block content%}
+<main id="main-sistema">
+    <section id="sidebar-sistema">
+        {%include 'sidebar.html'%}
+    </section>
+    <section id="contenido-sistema">
+        <!-- Container del titulo y boton -->
+        <div class="container p-4 mt-lg-5">
+            <div class="row d-flex align-items-center justify-content-between">
+                <div class="col-12">
+                    <h1 class="text-center text-md-start">{{dato}}</h1>
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <div class="btn-group text-end">
+                                    <a href="{%url 'one_modelo-crear' dato.id%}" class="btn btn-sistema btn-dark btn-lg {%if dato.one_modelo%}disabled{%endif%}">One Modelo</a>
+                                    <a href="{%url 'many_modelo-crear' dato.id%}" class="btn btn-sistema btn-dark btn-lg ">Many Modelo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%include 'modelo_complemento.html'%}
+                </div>
+            </div>
+        </div>
+        <!-- Card Ver -->
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Estás seguro que deseas eliminar {{dato}}?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a class="btn btn-dark" href="{%url 'eliminar_modelo' dato.id%}">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{%include 'footer.html'%}
+{%endblock content%}

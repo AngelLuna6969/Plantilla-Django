@@ -1,0 +1,97 @@
+<div class="card mt-2">
+    <div class="card-header fw-bolder d-flex justify-content-between align-items-center">
+        <span>General</span>
+        {%if request.user.is_superuser and modificacion%}
+        <span>
+            <div class="btn-group" role="group">
+                <a class="btn btn-opciones btn-outline-dark" href="{%url 'editar_modelo' dato.id%}"><i
+                        class="bi bi-pencil-square"></i></a>
+                <a class="btn btn-opciones btn-outline-dark" href="{%url 'eliminar_modelo' dato.id%}"><i
+                        class="bi bi-trash3"></i></a>
+            </div>
+        </span>
+        {%endif%}
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><span class="text-muted">Nombre:</span><span
+                class="mx-2 fw-bold">{{dato.nombre}}</span></li>
+        <li class="list-group-item"><span class="text-muted">Descripción:</span><span
+                class="mx-2 fw-bold">{{dato.descripcion}}</span></li>
+        <li class="list-group-item"><span class="text-muted">Fecha:</span><span
+                class="mx-2 fw-bold">{{dato.fecha}}</span></li>
+        <li class="list-group-item"><span class="text-muted">Hora:</span><span class="mx-2 fw-bold">{{dato.hora}}</span>
+        </li>
+        <li class="list-group-item"><span class="text-muted">Archivo:</span><span
+                class="mx-2 fw-bold">{{dato.archivo}}</span></li>
+        <li class="list-group-item"><span class="text-muted">Foto:</span><span class="mx-2 fw-bold">{{dato.foto}}</span>
+        </li>
+    </ul>
+</div>
+
+<!-- Card para el campo one to one -->
+{%if dato.one_modelo%}
+<div class="card mt-2">
+    <div class="card-header fw-bolder d-flex justify-content-between align-items-center">
+        <span>One Modelo</span>
+        {%if request.user.is_superuser and modificacion%}
+        <span>
+            <div class="btn-group" role="group">
+                <a class="btn btn-opciones btn-outline-dark" href="{%url 'editar_one_modelo' dato.one_modelo.id%}"><i
+                        class="bi bi-pencil-square"></i></a>
+                <a class="btn btn-opciones btn-outline-dark" href="{%url 'eliminar_one_modelo' dato.one_modelo.id%}"><i
+                        class="bi bi-trash3"></i></a>
+            </div>
+        </span>
+        {%endif%}
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><span class="text-muted">Nombre Complementario:</span><span
+                class="mx-2 fw-bold">{{dato.one_modelo.nombre_complementario}}</span></li>
+        <li class="list-group-item"><span class="text-muted">Descripción:</span><span
+                class="mx-2 fw-bold">{{dato.one_modelo.descripcion_complementario}}</span></li>
+    </ul>
+</div>
+{%endif%}
+
+
+<!-- Card para el campo many to one -->
+{%if dato.many_modelo_set.all %}
+<div class="card mt-2">
+    <div class="card-header fw-bolder d-flex justify-content-between align-items-center">
+        <span>Many Modelo</span>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 5%;" scope="col"></th>
+                    <th style="width: auto;" scope="col">Nombre</th>
+                    <th style="width: auto;" scope="col">Descripción</th>
+                    {%if request.user.is_superuser%}
+                    <th style="width: 10%;" scope="col"></th>
+                    {%endif%}
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {%for x in dato.many_modelo_set.all %}
+                <tr>
+                    <th style="width: 5%;" scope="row">{{forloop.counter}}</th>
+                    <td style="width: auto;">{{x.nombre_foreign}}</td>
+                    <td style="width: auto;">{{x.descripcion_foreign}}</td>
+                    {%if request.user.is_superuser and modificacion%}
+                    <td style="width: 10%;">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-outline-dark" href="{%url 'editar_many_modelo' x.id%}"><i
+                                    class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-outline-dark" href="{%url 'eliminar_many_modelo' x.id%}"><i
+                                    class="bi bi-trash3"></i></a>
+                        </div>
+                    </td>
+                    {%endif%}
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endif%}
