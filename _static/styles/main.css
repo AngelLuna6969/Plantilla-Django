@@ -1,0 +1,442 @@
+:root {
+    --principal: #0c2c35;
+    --separador: #103844;
+    --complementario: #3c9cae;
+    --terciaro: #24606f;
+    --cuaternario: #9bcfda;
+    --fondo: white;
+    --fondo-complementario: #d5d8db;
+    --font: "Quicksand";
+
+    --gris:#e4e4e4;
+    --gris2:#bbbbbb;
+    --gris3:#919191;
+    --gris4:#f9f9f9;
+    --gris5:#5a5a5a;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    /* can also use viewport units (height: 100vh) */
+}
+
+body {
+    display: flex;
+    /* displays flex-items (children) inline */
+    flex-direction: column;
+    /* stacks them vertically */
+    height: 100vh;
+    width: 100vw;
+    /* needs to take the parents height, alternative: body {display: flex} */
+    margin: 0;
+    padding: 0;
+    background-color: var(--fondo);
+}
+
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(175, 175, 175) transparent;
+
+    background-color: var(--fondo);
+}
+
+.main-scroll {
+    max-height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(175, 175, 175) transparent;
+    flex: 1;
+    background-color: var(--fondo);
+}
+
+li a,
+p a {
+    text-decoration: none;
+    color: var(--principal);
+}
+
+#menu-sidebar a {
+    color: var(--fondo);
+    font-size: large;
+}
+
+#menu-sidebar a:hover {
+    color: var(--complementario);
+    transition: 0.3s;
+}
+
+.linea {
+    border: solid var(--fondo-complementario) 0.1px;
+
+}
+
+/* NAVBAR */
+
+nav {
+    background-color: var(--principal);
+}
+
+.logo {
+    max-height: 60px;
+}
+
+.boton-home {
+    text-decoration: none;
+    color: var(--principal);
+    margin: 0.3rem;
+    padding: 0.3rem;
+
+}
+
+.boton-home:hover {
+    color: white;
+    transition: 0.3s;
+    color: var(--complementario);
+
+}
+
+/* Slider */
+.carousel-item img {
+    min-height: 250px;
+    height: 42vh;
+    max-height: 700px;
+    object-fit: cover;
+}
+
+.separador-gris {
+    background-color: var(--gris3);
+    height: 2.5rem;
+}
+
+.separador2 {
+    background-color: var(--separador);
+    height: 2.5rem;
+}
+
+.separador {
+    background-color: var(--principal);
+    height: 1rem;
+}
+
+
+/* Facts Home */
+.facts-section {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+}
+
+
+
+.fact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: var(--principal);
+}
+
+.fact i {
+    color: var(--fondo);
+    font-size: 3rem;
+}
+
+.fact:hover {
+    background-color: var(--complementario);
+    transition: 0.3s;
+}
+
+.fact svg {
+    width: 60px;
+    height: 60px;
+    color: var(--fondo);
+}
+
+/* Featuretes */
+.featurette-divider {
+    margin: 5rem 0;
+    /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    /* rtl:remove */
+    letter-spacing: -.05rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--fondo-complementario);
+}
+
+/* LOGIN */
+.formis {
+    height: 90%;
+
+}
+
+.imagen-login {
+    width: 50%;
+    height: fit-content;
+    margin: 1rem;
+}
+
+#sidebar-sistema {
+    max-height: 100%;
+    /* background-color: var(--principal); */
+}
+
+
+/* SIDEBAR */
+.btn-sidebar {
+    color: var(--fondo) !important;
+    font-size: 1.5rem !important;
+    width: 100%;
+    background-color: var(--complementario);
+}
+
+.btn-sidebar:hover {
+    color: var(--complementario) !important;
+}
+
+#nav-sidebar,
+#nav-sidebar a,
+.hamburguesa {
+    color: var(--fondo);
+    text-decoration: none !important;
+    background-color: var(--principal);
+}
+
+.hamburguesa {
+    font-size: 1.5rem;
+}
+
+#contenedor-sidebar {
+    background-color: var(--principal);
+}
+
+#contenido-sidebar {
+    background-color: var(--principal);
+}
+
+
+#menu-sidebar {
+    background-color: var(--terciaro);
+}
+
+
+
+#contenido-sistema {
+    max-height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(175, 175, 175) transparent;
+    flex: 1;
+    background-color: var(--fondo);
+}
+
+#sidebar-sistema,
+#contenido-sistema {
+    width: 100%;
+}
+
+#fila-contenido-sidebar {
+    flex: 1;
+}
+
+
+.logo-sistema {
+    width: 40px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: var(--fondo);
+    object-fit: contain;
+}
+
+.boton {
+    background-color: var(--principal);
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    color: var(--fondo);
+}
+
+.boton:hover {
+    background-color: var(--complementario);
+    color: var(--fondo);
+    transition: 0.3s;
+}
+
+.boton a {
+    color: var(--principal);
+}
+
+.boton a:hover {
+    color: var(--principal);
+}
+
+.btn-sistema {
+    color: var(--fondo) !important;
+    text-decoration: none;
+    background-color: var(--principal) !important;
+}
+
+.btn-sistema:hover {
+    background-color: var(--complementario) !important;
+}
+
+.btn-sistema-gris {
+    color: var(--fondo) !important;
+    text-decoration: none;
+    background-color: var(--gris2) !important;
+}
+
+.btn-sistema-gris:hover {
+    background-color: var(--gris5) !important;
+}
+
+
+
+.boton svg {
+    margin-right: 4px;
+}
+
+
+
+.form-control:focus {
+    border-color: var(--secundario);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* ESTILOS TABLA */
+
+.page-item.active .page-link {
+    background-color: var(--principal);
+    border-color: var(--principal);
+}
+
+.btn-tabla {
+    color: var(--principal);
+    font-size: 1.5rem;
+}
+
+
+.btn-tabla:hover {
+    color: var(--complementario);
+    transition: 0.3s;
+}
+
+.th-index {
+    background-color: var(--terciaro) !important;
+    color: var(--fondo) !important;
+}
+
+.tb-index {
+    border: solid var(--fondo-complementario) 0.1px;
+}
+
+.page-link {
+    color: var(--principal);
+}
+
+/* CARDS */
+
+.titulo-form {
+    color: var(--principal);
+}
+
+.card-header-form {
+    background-color: var(--cuaternario);
+    color: var(--fondo);
+    font-size: 1.5rem;
+}
+
+.card-header {
+    background-color: var(--terciaro);
+    color: var(--fondo);
+    font-size: 1.5rem;
+}
+
+.card-formulario {
+    background-color: var(--fondo-complementario);
+}
+
+.btn-opciones {
+    color: var(--fondo) !important;
+}
+
+.btn-opciones:hover {
+    background-color: var(--complementario) !important;
+}
+
+.btn-opciones-black {
+    color: rgb(106, 98, 98) !important;
+    
+}
+
+.btn-opciones-black:hover {
+    color: var(--fondo) !important;
+    background-color: var(--principal) !important;
+}
+
+.icono-ad{
+    color: var(--principal) !important;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    #main-sistema {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    #sidebar-sistema {
+        width: 20%;
+    }
+
+}
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    #sidebar-sistema {
+        width: 15%;
+    }
+}
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .logo-sistema {
+        width: 50px;
+    }
+
+    #sidebar-sistema {
+        width: 15%;
+    }
+}
+
+@media (min-width: 2300px) {
+    .logo-sistema {
+        width: 50px;
+    }
+
+    #sidebar-sistema {
+        width: 10%;
+    }
+}

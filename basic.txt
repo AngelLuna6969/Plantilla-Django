@@ -1,0 +1,27 @@
+--DataTable--
+
++Modificacion del archivo modelo-lista.html
+Agregue los scripts necesarios para las DataTables y sus estilos
+Remplaze la tabla predefinida por la nueva tabla necesaria <!-- Tabla -->
+Agregue las funcionalidades js en el archivo _static/js/main.js y se consume la ruta
+deseada para la respuesta json
+
++Modificacion de las views de Generales
+Agregue la vista list_Modelos para consumir un json de los list_Modelos
+aqui no uso el serializaer!!!
+Agregue la vista agregar_Modelos para agregar los 8000 registros
+Agregue la clase ModeloList para utilizar el Serializer
+
++Modificacion de las urls de Generales
+Importe la clase de las vistas
+Genere tres nuevas rutas
+1. Lista de modelos sin Serializer "modelos-prueba"
+2. Creacion de 8000 registros "agrega"
+3. Consumo del Serializer "tumodelo_list"
+
+--Serializer--
+Creacion de aruchivo Serializer.py
+Importacion de restframework
+"pip install djangorestframework"
+Agregar aplicacion en settings
+"rest_framework",

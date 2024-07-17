@@ -1,0 +1,61 @@
+{%extends 'main.html'%}{%block title%}{{titulo|upper}}{%endblock title%}
+{%load static%}
+{%block scripts%}{%endblock%}
+
+{%block styles%}
+<style>
+    main {
+        background-image: url('{%static "images/home/s1.jpg"%}');
+        object-fit:cover;
+        background-size: cover;
+
+    }
+
+    .card {
+        margin-top: 100px;
+        max-width: 400px;
+    }
+</style>
+{%endblock%}
+
+{%block content%}
+
+{%include 'nav-home.html'%}
+{%include 'mensajes.html'%}
+<main>
+
+    <!-- LOGIN -->
+    <div class="col-12 separador"></div>
+    <div class="bg-image"></div>
+    <div class="container">
+        <div class="row justify-content-center align-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <img src="{%static 'images/logo.png'%}" alt="Logotipo" style="max-width: 100px;">
+                    </div>
+                    <div class="card-body">
+                        <form action="#" method="post" class="login-form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="Usuario" class="form-label">Usuario</label>
+                                <input type="text" class="form-control" name="username" id="username"
+                                    aria-describedby="userHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" name="password" id="password">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="boton btn btn-block">Iniciar sesión</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{%include 'footer.html'%}
+{%endblock content%}

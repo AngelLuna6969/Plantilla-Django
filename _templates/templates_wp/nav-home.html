@@ -1,0 +1,24 @@
+{%load static%}
+<!-- NAVBAR HOME -->
+<nav class="navbar navbar-expand-lg g-0">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{%url 'home'%}"><img class="logo-sistema" src="{%static '/images/logo.png'%}" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-lg-flex justify-content-between " id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="boton-home text-light" href="{%url 'home'%}">Acerca de <i class="bi bi-info-circle"></i></a>
+            </div>
+            <div class="navbar-nav">
+                {%if request.user.is_authenticated%}
+                <a class="boton-home text-light" aria-current="page" href="{%url 'modelo-lista'%}">Entrar <i class="bi bi-door-open"></i></i></a>
+                <a class="boton-home text-light" aria-current="page" href="{%url 'logout-page'%}">Cerrar Sesión <i class="bi bi-box-arrow-in-right"></i></a>
+                {%else%}
+                <a class="boton-home text-light" aria-current="page" href="{%url 'login-page'%}">Iniciar Sesión <i class="bi bi-box-arrow-in-left"></i></a>
+                {%endif%}
+            </div>
+        </div>
+    </div>
+</nav>

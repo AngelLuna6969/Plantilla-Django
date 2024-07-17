@@ -1,0 +1,67 @@
+{%extends 'main.html'%}{%block title%}{{titulo|upper}}{%endblock title%}
+{%load static%}
+{% load crispy_forms_tags %}
+{%block scripts%}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+
+{%endblock%}
+
+{%block styles%}
+<style>
+
+
+</style>
+{%endblock%}
+
+{%block content%}
+<main id="main-sistema">
+    <section id="sidebar-sistema">
+        {%include 'sidebar.html'%}
+    </section>
+    <section id="contenido-sistema">
+        <!-- Container del titulo y boton -->
+        <div class="container-fluid p-4">
+            <div class="row d-flex align-items-center justify-content-between">
+                <div class="col-auto">
+                    <h1 class="text-center text-md-start">Validar</h1>
+                </div>
+            </div>
+        </div>
+        <!-- Formulario -->
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            {{form.media}}
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card m-2">
+                            <div class="card-header aling-center">
+                                <div class="text-center text">
+                                    Datos Formulario
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                ¿Estás seguro que deseas validar {{dato}}?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4 d-flex align-items-center justify-content-around">
+                        <input class="btn btn-dark btn-lg" type="submit" value="Eliminar" name="guardar" id="btn">
+                        <input class="btn btn-secondary btn-lg" style="margin: 0;" type=button value="Atrás"
+                        onClick="javascript:history.go(-1);">
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+        </form>
+    </section>
+</main>
+{%include 'footer.html'%}
+{%endblock content%}
